@@ -1,0 +1,55 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "ISGSA - API CHAT OPS",
+    "description": "Desenvolvido por <b>Truly</br>"
+  },
+  "host": "undefined",
+  "basePath": "/",
+  "tags": [],
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "Basic": {
+      "type": "apiKey",
+      "name": "x-access-token",
+      "in": "header",
+      "scopes": {
+        "admin": "admin"
+      }
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    }
+  },
+  "definitions": {
+    "login": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": "username"
+        },
+        "password": {
+          "type": "string",
+          "example": "password"
+        }
+      }
+    }
+  }
+}
