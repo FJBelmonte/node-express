@@ -7,7 +7,7 @@
         "start": "node src/index",
         "swagger-autogen": "node src/swagger.js",
         "dev": "npx knex migrate:latest && node src/swagger.js",
-        "test": "npx knex migrate:latest && cross-env NODE_ENV=test jest"
+        "test": "npx knex migrate:latest && cross-env ENVIRONMENT=test jest"
     },
     "author": "fernando.santos@isgsa.com.br",
     "license": "ISC",

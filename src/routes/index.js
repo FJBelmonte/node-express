@@ -6,7 +6,7 @@ routes.get("/", (req, res) => {
     return res.send("Teste");
 });
 
-routes.post("/user", (req, res) => {
+routes.post("/user", user.validate.create, (req, res) => {
     /*
         #swagger.tags = ['user']
         #swagger.parameters['user'] = {

@@ -12,7 +12,7 @@ const _create = async (req, res, next) => {
     const { username, password } = req.body;
     const userExist = await verifyIfEmailExists(username);
     if (userExist) {
-        return res.status(400);
+        return res.status(401).json({ msg: "user already exists" });
     } else {
         next();
     }

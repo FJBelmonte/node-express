@@ -1,3 +1,7 @@
+const express = require("express");
+const cors = require("cors");
+const { errors } = require("celebrate");
+const routes = require("./routes");
 const morgan = require("morgan");
 const path = require("path");
 const rfs = require("rotating-file-stream");
@@ -6,20 +10,27 @@ const swaggerFile = require("./swagger_output.json");
 
 const http = require("http");
 const PORT = process.env.PORT || 3333;
-const app = require("./app");
+const app = express();
 
 const MORGAN_LOG = ":method:url :status :response-time ms :date[iso]";
+
+require("./initialize")();
 
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(
     morgan(MORGAN_LOG, {
         stream: rfs.createStream("access.log", {
             interval: "1d",
-            path: path.join(__dirname, "..", "log"),
+            path: path.join(__dirname, "..", "log", process.env.ENVIRONMENT),
         }),
     })
 );
 app.use(morgan(MORGAN_LOG));
+
+app.use(cors());
+app.use(express.json());
+app.use(routes);
+app.use(errors());
 
 console.log(
     `Please open ${
@@ -30,3 +41,5 @@ console.log(
 );
 
 http.createServer(app).listen(PORT);
+
+module.exports = app;

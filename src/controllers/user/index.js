@@ -1,8 +1,9 @@
 const connection = require("../../../knex/knex");
 const { hash, compare } = require("../../utils/security");
+const validate = require("./validate");
 require("dotenv-safe").config();
 
-const _create = async (req, res) => {
+const _create = async (req, res, next) => {
     try {
         const { username, password } = req.body;
         const role = "user";
@@ -29,4 +30,5 @@ module.exports = {
     read: _read,
     update: _update,
     delete: _delete,
+    validate,
 };
