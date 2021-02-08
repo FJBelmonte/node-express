@@ -36,6 +36,34 @@
         "parameters": [],
         "responses": {}
       }
+    },
+    "/user": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "user",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "400": {
+            "description": "Solicitação Inválida"
+          }
+        }
+      }
     }
   },
   "definitions": {

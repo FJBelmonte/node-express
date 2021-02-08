@@ -10,4 +10,13 @@ module.exports = {
             directory: __dirname + "/knex/migrations",
         },
     },
+    development: {
+        client: "sqlite3",
+        connection: {
+            filename: __dirname + "/knex/test.sqlite3",
+        },
+        migrations: {
+            directory: __dirname + "/knex/migrations",
+        },
+    },
 };
