@@ -4,11 +4,10 @@ module.exports = {
     development: {
         client: "sqlite3",
         connection: {
-            filename: "./dev.sqlite3",
+            filename: __dirname + "/knex/dev.sqlite3",
         },
-        migration: {
-            directory: "./migrations",
+        migrations: {
+            directory: __dirname + "/knex/migrations",
         },
-        useNullAsDefault: true,
     },
 };

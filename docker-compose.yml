@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+    backend:
+        container_name: backend
+        build:
+            context: ./
+        command: npm run-script swagger-autogen
+        network_mode: host

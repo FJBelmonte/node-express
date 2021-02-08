@@ -8,6 +8,7 @@ const swaggerUi = require("swagger-ui-express");
 const { errors } = require("celebrate");
 const routes = require("./routes");
 const swaggerFile = require("./swagger_output.json");
+require("./initialize")();
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.use(
     morgan(MORGAN_LOG, {
         stream: rfs.createStream("access.log", {
             interval: "1d",
-            path: path.join(__dirname, "log"),
+            path: path.join(__dirname, "..", "log"),
         }),
     })
 );

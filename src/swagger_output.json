@@ -5,11 +5,12 @@
     "title": "ISGSA - API CHAT OPS",
     "description": "Desenvolvido por <b>Truly</br>"
   },
-  "host": "undefined",
+  "host": "localhost:3306",
   "basePath": "/",
   "tags": [],
   "schemes": [
-    "https"
+    "https",
+    "http"
   ],
   "securityDefinitions": {
     "Basic": {

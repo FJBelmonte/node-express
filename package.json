@@ -1,12 +1,12 @@
 {
-    "name": "chatops-api",
+    "name": "node-express-template",
     "version": "1.0.0",
-    "description": "Monitora os serviços internos do grupo ISGSA",
+    "description": "template",
     "main": "index.js",
     "scripts": {
         "start": "node src/index",
-        "dev": "nodemon src/index",
-        "swagger": "node src/swagger.js",
+        "swagger-autogen": "node src/swagger.js",
+        "dev": "npx knex migrate:latest && node src/swagger.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "fernando.santos@isgsa.com.br",
@@ -18,10 +18,10 @@
         "dotenv-safe": "^8.2.0",
         "express": "^4.17.1",
         "fs": "0.0.1-security",
-        "http": "0.0.1-security",
         "jsonwebtoken": "^8.5.1",
         "knex": "^0.21.17",
         "lodash": "^4.17.20",
+        "md5": "^2.3.0",
         "morgan": "^1.10.0",
         "path": "^0.12.7",
         "rotating-file-stream": "^2.1.4",
@@ -29,6 +29,7 @@
         "swagger-ui-express": "^4.1.6"
     },
     "devDependencies": {
-        "nodemon": "^2.0.7"
+        "nodemon": "^2.0.7",
+        "sqlite3": "^5.0.1"
     }
 }

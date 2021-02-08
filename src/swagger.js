@@ -3,9 +3,9 @@ require("dotenv-safe").config();
 
 const doc = {
     info: {
-        version: "1.0.0",
-        title: "ISGSA - API CHAT OPS",
-        description: "Desenvolvido por <b>Truly</br>",
+        version: process.env.VERSION,
+        title: process.env.PROJECT_NAME,
+        description: process.env.PROJECT_DESCRIPTION,
     },
     host: `${
         process.env.URL === "localhost"
@@ -13,7 +13,7 @@ const doc = {
             : process.env.URL
     }`,
     basePath: "/",
-    schemes: ["https"],
+    schemes: ["https", "http"],
     consumes: ["application/json"],
     produces: ["application/json"],
     tags: [],
@@ -36,7 +36,7 @@ const doc = {
 };
 
 const outputFile = "./src/swagger_output.json";
-const endpointsFiles = ["./src/routes.js"];
+const endpointsFiles = ["./src/routes/index.js"];
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
     require("./index");
