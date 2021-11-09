@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "ISGSA - API CHAT OPS",
-    "description": "Desenvolvido por <b>Truly</br>"
+    "title": "NOME DO PROJETO",
+    "description": "Desenvolvido por <b>Fernando Belmonte</br>"
   },
   "host": "localhost:3306",
   "basePath": "/",
