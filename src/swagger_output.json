@@ -7,7 +7,6 @@
   },
   "host": "localhost:3306",
   "basePath": "/",
-  "tags": [],
   "schemes": [
     "https",
     "http"
@@ -31,10 +30,13 @@
   "paths": {
     "/": {
       "get": {
-        "tags": [],
         "description": "",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/user": {
@@ -49,7 +51,6 @@
             "in": "body",
             "description": "user",
             "required": true,
-            "type": "object",
             "schema": {
               "$ref": "#/definitions/login"
             }
