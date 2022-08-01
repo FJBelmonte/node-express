@@ -1,7 +1,7 @@
-const connection = require("../../../knex/knex");
-const jwt = require("jsonwebtoken");
-const { compare } = require("../../utils/security");
-require("dotenv-safe").config();
+import "dotenv/config";
+import connection from "../../../knex/knex.js";
+import jwt from "jsonwebtoken";
+import { compare } from "../../utils/security.js";
 
 const login = async (req, res) => {
     const { username, password } = req.body;
@@ -25,4 +25,4 @@ const login = async (req, res) => {
     return res.status(401);
 };
 
-module.exports = { login };
+export default { login };

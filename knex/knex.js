@@ -1,8 +1,6 @@
-require("dotenv-safe").config();
-const knex = require("knex");
-const config = require("../knexfile.js")[process.env.ENVIRONMENT];
-console.log("env", process.env.ENVIRONMENT);
-console.log("config", config);
-const connection = knex(config);
+import "dotenv/config";
+import knex from "knex";
+import config from "../knexfile.js";
+const connection = knex(config[process.env.ENVIRONMENT]);
 
-module.exports = connection;
+export default connection;

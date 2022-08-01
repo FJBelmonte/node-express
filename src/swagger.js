@@ -1,5 +1,5 @@
-const swaggerAutogen = require("swagger-autogen")("pt-BR");
-require("dotenv-safe").config();
+import "dotenv/config";
+import swaggerAutogen from "swagger-autogen";
 
 const doc = {
     info: {
@@ -7,11 +7,7 @@ const doc = {
         title: process.env.PROJECT_NAME,
         description: process.env.PROJECT_DESCRIPTION,
     },
-    host: `${
-        process.env.URL === "localhost"
-            ? "localhost:" + process.env.PORT
-            : process.env.URL
-    }`,
+    host: `${process.env.URL === "localhost" ? "localhost:" + process.env.PORT : process.env.URL}`,
     basePath: "/",
     schemes: ["https", "http"],
     consumes: ["application/json"],
@@ -38,6 +34,4 @@ const doc = {
 const outputFile = "./src/swagger_output.json";
 const endpointsFiles = ["./src/routes/index.js"];
 
-swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-    require("./index.js");
-});
+swaggerAutogen(outputFile, endpointsFiles, doc);

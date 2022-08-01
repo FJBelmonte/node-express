@@ -1,7 +1,7 @@
-const request = require("supertest");
-const app = require("../src");
+import request from "supertest";
+import app from "../src/index.js";
 
-const connection = require("../knex/knex");
+import connection from "../knex/knex";
 
 describe("USER", () => {
     beforeAll(async () => {

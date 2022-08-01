@@ -1,9 +1,13 @@
-const express = require("express");
+import express from "express";
+import user from "../controllers/user/index.js";
 const routes = express.Router();
-const user = require("../controllers/user");
 
 routes.get("/", (req, res) => {
     return res.send("Teste");
+});
+
+routes.post("/login", (req, res) => {
+    user.login(req, res);
 });
 
 routes.post("/user", user.validate.create, (req, res) => {
@@ -22,4 +26,4 @@ routes.post("/user", user.validate.create, (req, res) => {
     user.create(req, res);
 });
 
-module.exports = routes;
+export default routes;

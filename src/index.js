@@ -1,20 +1,25 @@
-const express = require("express");
-const cors = require("cors");
-const { errors } = require("celebrate");
-const routes = require("./routes");
-const morgan = require("morgan");
-const path = require("path");
-const rfs = require("rotating-file-stream");
-const swaggerUi = require("swagger-ui-express");
-const swaggerFile = require("./swagger_output.json");
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+import { errors } from "celebrate";
+import routes from "./routes/index.js";
+import morgan from "morgan";
+import path from "path";
+import rfs from "rotating-file-stream";
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "./swagger_output.json" assert { type: "json" };
+import initialize from "./initialize.js";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const http = require("http");
+import http from "http";
 const PORT = process.env.PORT || 3333;
 const app = express();
 
 const MORGAN_LOG = ":method:url :status :response-time ms :date[iso]";
 
-require("./initialize")();
+initialize();
 
 app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(
@@ -32,14 +37,8 @@ app.use(express.json());
 app.use(routes);
 app.use(errors());
 
-console.log(
-    `Please open ${
-        process.env.URL === "localhost"
-            ? "localhost:" + process.env.PORT
-            : process.env.URL
-    }/doc in your browser`
-);
+console.log(`Please open ${process.env.URL === "localhost" ? "localhost:" + process.env.PORT : process.env.URL}/doc in your browser`);
 
 http.createServer(app).listen(PORT);
 
-module.exports = app;
+export default app;

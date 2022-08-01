@@ -1,4 +1,4 @@
-const md5 = require("md5");
+import md5 from "md5";
 
 const hash = (rawString, options = {}) => {
     const salt = options.salt ? options.salt : new Date().getTime();
@@ -25,4 +25,4 @@ const compare = (rawString, hashedString) => {
     }
 };
 
-module.exports = { compare, hash };
+export { compare, hash };

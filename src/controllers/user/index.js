@@ -1,7 +1,6 @@
-const connection = require("../../../knex/knex");
-const { hash, compare } = require("../../utils/security");
-const validate = require("./validate");
-require("dotenv-safe").config();
+import connection from "../../../knex/knex.js";
+import { hash, compare } from "../../utils/security/index.js";
+import validate from "./validate.js";
 
 const _create = async (req, res, next) => {
     try {
@@ -25,7 +24,7 @@ const _update = async (req, res) => {};
 
 const _delete = async (req, res) => {};
 
-module.exports = {
+export default {
     create: _create,
     read: _read,
     update: _update,

@@ -1,4 +1,4 @@
-const { Segments, Joi, celebrate } = require("celebrate");
+import { Segments, Joi, celebrate } from "celebrate";
 
 const _create = celebrate({
     [Segments.BODY]: Joi.object().keys({
@@ -15,7 +15,7 @@ const _update = celebrate({});
 const _delete = celebrate({});
 */
 
-module.exports = {
+export default {
     create: _create,
     /*
     read: _read,

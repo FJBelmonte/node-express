@@ -1,11 +1,9 @@
-const connection = require("../knex/knex");
-const { hash } = require("./utils/security");
-require("dotenv-safe").config();
+import "dotenv/config";
+import connection from "../knex/knex.js";
+import { hash } from "./utils/security/index.js";
 
 const verifyIfEmailExists = async (username) => {
-    const user = await connection("user")
-        .select("*")
-        .where("username", username);
+    const user = await connection("user").select("*").where("username", username);
 
     return user.length !== 0;
 };
@@ -24,4 +22,4 @@ const init = async () => {
     }
 };
 
-module.exports = init;
+export default init;

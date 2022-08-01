@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken");
-require("dotenv-safe").config();
+import "dotenv/config";
+import jwt from "jsonwebtoken";
 
 const reqAuth = async (req, res, next) => {
     const token = req.headers["x-access-token"];

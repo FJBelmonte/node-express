@@ -1,9 +1,7 @@
-const connection = require("../../../knex/knex");
+import connection from "../../../knex/knex.js";
 
 const verifyIfEmailExists = async (username) => {
-    const user = await connection("user")
-        .select("*")
-        .where("username", username);
+    const user = await connection("user").select("*").where("username", username);
 
     return user.length !== 0;
 };
@@ -29,7 +27,7 @@ const _delete = (req, res, next) => {
     next();
 };
 
-module.exports = {
+export default {
     create: _create,
     read: _read,
     update: _update,
