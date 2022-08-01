@@ -7,6 +7,7 @@ import morgan from "morgan";
 import path from "path";
 import rfs from "rotating-file-stream";
 import swaggerUi from "swagger-ui-express";
+import fs from "fs";
 import swaggerFile from "./swagger_output.json" assert { type: "json" };
 import initialize from "./initialize.js";
 import { fileURLToPath } from "url";
@@ -21,7 +22,19 @@ const MORGAN_LOG = ":method:url :status :response-time ms :date[iso]";
 
 initialize();
 
-app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use(
+    "/doc",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerFile, {
+        customCssUrl: "/styles/custom.css",
+        customJs: "/js/swagger.js",
+        customSiteTitle: process.env.PROJECT_NAME,
+        //customfavicon: "/favicon.ico",
+    })
+);
+
+app.use(express.static(path.join(__dirname, "www")));
+
 app.use(
     morgan(MORGAN_LOG, {
         stream: rfs.createStream("access.log", {
