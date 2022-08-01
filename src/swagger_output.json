@@ -1,17 +1,31 @@
 {
-  "openapi": "3.0.0",
+  "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "NOME",
-    "description": "Desenvolvido"
+    "title": "NOME DO PROJETO",
+    "description": "Desenvolvido por <b>Fernando Belmonte</br>"
   },
-  "servers": [
-    {
-      "url": "https://localhost:3306/"
-    },
-    {
-      "url": "http://localhost:3306/"
+  "host": "localhost:3306",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "Basic": {
+      "type": "apiKey",
+      "name": "x-access-token",
+      "in": "header",
+      "scopes": {
+        "admin": "admin"
+      }
     }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
   ],
   "paths": {
     "/": {
@@ -23,13 +37,6 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/login": {
-      "post": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
       }
     },
     "/user": {
@@ -45,44 +52,32 @@
             "description": "user",
             "required": true,
             "schema": {
-              "$ref": "#/components/schemas/login"
+              "$ref": "#/definitions/login"
             }
           }
         ],
         "responses": {
           "201": {
-            "description": "Criado"
+            "description": "Created"
           },
           "400": {
-            "description": "Solicitação Inválida"
+            "description": "Bad Request"
           }
         }
       }
     }
   },
-  "components": {
-    "schemas": {
-      "login": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string",
-            "example": "username"
-          },
-          "password": {
-            "type": "string",
-            "example": "password"
-          }
-        }
-      }
-    },
-    "securitySchemes": {
-      "Basic": {
-        "type": "apiKey",
-        "name": "x-access-token",
-        "in": "header",
-        "scopes": {
-          "admin": "admin"
+  "definitions": {
+    "login": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": "username"
+        },
+        "password": {
+          "type": "string",
+          "example": "password"
         }
       }
     }

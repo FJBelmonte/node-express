@@ -37,6 +37,10 @@ app.use(express.json());
 app.use(routes);
 app.use(errors());
 
+app.use("*", (req, res) => {
+    res.redirect("/doc");
+});
+
 console.log(`Please open ${process.env.URL === "localhost" ? "localhost:" + process.env.PORT : process.env.URL}/doc in your browser`);
 
 http.createServer(app).listen(PORT);

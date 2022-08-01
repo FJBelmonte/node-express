@@ -5,10 +5,10 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "start": "node src/index",
-        "swagger": "node src/swagger.js",
-        "dev": "npx knex migrate:latest && node src/swagger.js",
-        "test": "npx knex migrate:latest && cross-env ENVIRONMENT=test jest",
+        "start": "node -r dotenv/config src/index",
+        "swagger": "node -r dotenv/config src/swagger.js",
+        "dev": "npx knex migrate:latest && node -r dotenv/config src/swagger.js",
+        "test": "npx knex migrate:latest && cross-env ENVIRONMENT=test jest -r dotenv/config",
         "knex": "npx knex migrate:latest"
     },
     "author": "fernando.santos@isgsa.com.br",
