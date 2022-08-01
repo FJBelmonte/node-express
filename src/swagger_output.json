@@ -1,31 +1,17 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "NOME DO PROJETO",
-    "description": "Desenvolvido por <b>Fernando Belmonte</br>"
+    "title": "NOME",
+    "description": "Desenvolvido"
   },
-  "host": "localhost:3306",
-  "basePath": "/",
-  "schemes": [
-    "https",
-    "http"
-  ],
-  "securityDefinitions": {
-    "Basic": {
-      "type": "apiKey",
-      "name": "x-access-token",
-      "in": "header",
-      "scopes": {
-        "admin": "admin"
-      }
+  "servers": [
+    {
+      "url": "https://localhost:3306/"
+    },
+    {
+      "url": "http://localhost:3306/"
     }
-  },
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
   ],
   "paths": {
     "/": {
@@ -37,6 +23,13 @@
             "description": "OK"
           }
         }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     },
     "/user": {
@@ -52,7 +45,7 @@
             "description": "user",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/login"
+              "$ref": "#/components/schemas/login"
             }
           }
         ],
@@ -67,17 +60,29 @@
       }
     }
   },
-  "definitions": {
-    "login": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string",
-          "example": "username"
-        },
-        "password": {
-          "type": "string",
-          "example": "password"
+  "components": {
+    "schemas": {
+      "login": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "username"
+          },
+          "password": {
+            "type": "string",
+            "example": "password"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Basic": {
+        "type": "apiKey",
+        "name": "x-access-token",
+        "in": "header",
+        "scopes": {
+          "admin": "admin"
         }
       }
     }
